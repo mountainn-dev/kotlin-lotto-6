@@ -11,17 +11,21 @@ class LottoController {
 
     fun publish(count: Int) {
         publishLottoAsMuchAsCount(count)
-
+        showResult()
     }
 
     private fun publishLottoAsMuchAsCount(count: Int) {
         val lotto = mutableListOf<Lotto>()
 
-        for (i in Constants.ZERO..count) {
+        for (i in Constants.ZERO until count) {
             lotto.add(generatedLotto())
         }
 
         userLotto = lotto
+    }
+
+    private fun showResult() {
+        outputView.printResultPublish(userLotto)
     }
 
     private fun generatedLotto() = Lotto(generatedLottoNumbers())
