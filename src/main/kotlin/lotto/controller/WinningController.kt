@@ -67,6 +67,7 @@ class WinningController {
 
     fun showResult(userLotto: List<Lotto>) {
         calculateWinning(userLotto)
+        showResultWinning()
     }
 
     private fun calculateWinning(userLotto: List<Lotto>) {
@@ -100,6 +101,10 @@ class WinningController {
         }
 
         return count
+    }
+
+    private fun showResultWinning() {
+        outputView.printResultWinning(winningResult)
     }
 
     private fun requestWinningNumbers() {

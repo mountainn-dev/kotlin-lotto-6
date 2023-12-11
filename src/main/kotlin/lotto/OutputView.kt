@@ -4,6 +4,8 @@ import lotto.constants.Exception
 import lotto.constants.Request
 import lotto.constants.Result
 import lotto.domain.Lotto
+import lotto.domain.WinningRank
+import lotto.domain.WinningRank.*
 
 class OutputView {
 
@@ -42,5 +44,24 @@ class OutputView {
 
     fun printErrorOnRequestBonusNumber() {
         println(Exception.ERROR_REQUEST_BONUS_NUMBER)
+    }
+
+    fun printResultWinning(winningResult: List<WinningRank>) {
+        WinningRank.values().sortedBy { it.reward() }.map {
+            if (it != NOTHING) printResultRankByMatchCount(it, winningResult.count { result -> result == it })
+        }
+    }
+
+    private fun printResultRankByMatchCount(winningRank: WinningRank, count: Int) {
+        if (winningRank.bonusCondition()) printResultRankWithBonus(winningRank, count)
+        else printResultRankWithoutBonus(winningRank, count)
+    }
+
+    private fun printResultRankWithoutBonus(winningRank: WinningRank, count: Int) {
+        println(String.format(Result.RESULT_WINNING_NOT_BONUS, winningRank.conditionCount(), winningRank.reward(), count))
+    }
+
+    private fun printResultRankWithBonus(winningRank: WinningRank, count: Int) {
+        println(String.format(Result.RESULT_WINNING_BONUS, winningRank.conditionCount(), winningRank.reward(), count))
     }
 }
