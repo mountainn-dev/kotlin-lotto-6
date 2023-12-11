@@ -33,6 +33,6 @@ class LottoController {
     private fun generatedLottoNumbers() = Randoms.pickUniqueNumbersInRange(
         Constants.MIN_LOTTO_NUMBER,
         Constants.MAX_LOTTO_NUMBER,
-        Constants.MAX_LOTTO_NUMBER_COUNT
+        Constants.LOTTO_NUMBER_COUNT
     )
 }

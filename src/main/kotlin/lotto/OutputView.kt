@@ -35,4 +35,12 @@ class OutputView {
     fun printErrorOnRequestWinningNumbers() {
         println(Exception.ERROR_REQUEST_WINNING_NUMBERS)
     }
+
+    fun printRequestBonusNumber() {
+        println(Request.REQUEST_BONUS_NUMBER)
+    }
+
+    fun printErrorOnRequestBonusNumber() {
+        println(Exception.ERROR_REQUEST_BONUS_NUMBER)
+    }
 }

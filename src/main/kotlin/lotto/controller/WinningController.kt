@@ -15,15 +15,12 @@ class WinningController {
 
     fun pickNumbers() {
         pickWinningNumbers()
+        pickBonusNumber()
     }
 
     private fun pickWinningNumbers() {
         requestWinningNumbers()
         setValidWinningNumbers()
-    }
-
-    private fun requestWinningNumbers() {
-        outputView.printRequestWinningNumbers()
     }
 
     private fun setValidWinningNumbers() {
@@ -43,11 +40,46 @@ class WinningController {
         }
     }
 
+    private fun pickBonusNumber() {
+        requestBonusNumber()
+        setValidWinning()
+    }
+
+    private fun setValidWinning() {
+        do {
+            setWinning()
+        } while (isControllerOnError())
+    }
+
+    private fun setWinning() {
+        try {
+            winning = Winning(winningNumbers, readNumberFromUser())
+            controllerState = NORMAL
+        } catch (e: IllegalArgumentException) {
+            requestBonusNumberOnError()
+            controllerState = ERROR
+        }
+    }
+
+    private fun requestWinningNumbers() {
+        outputView.printRequestWinningNumbers()
+    }
+
     private fun requestWinningNumbersOnError() {
         outputView.printErrorOnRequestWinningNumbers()
     }
 
+    private fun requestBonusNumber() {
+        outputView.printRequestBonusNumber()
+    }
+
+    private fun requestBonusNumberOnError() {
+        outputView.printErrorOnRequestBonusNumber()
+    }
+
     private fun readNumbersFromUser() = inputView.readNumbers()
+
+    private fun readNumberFromUser() = inputView.readNumber()
 
     private fun isControllerOnError() = controllerState == ERROR
 }
