@@ -1,15 +1,22 @@
 package lotto
 
-import lotto.controller.UserLottoController
+import lotto.controller.LottoController
+import lotto.controller.MoneyController
 
 class LottoGame {
-    private val userLottoController = UserLottoController()
+    private val moneyController = MoneyController()
+    private val lottoController = LottoController()
 
     fun run() {
-        buyLotto()
+        setLottoMoney()
+        publishLotto()
     }
 
-    private fun buyLotto() {
-        userLottoController.saleLotto()
+    private fun setLottoMoney() {
+        moneyController.set()
+    }
+
+    private fun publishLotto() {
+        lottoController.publish()
     }
 }

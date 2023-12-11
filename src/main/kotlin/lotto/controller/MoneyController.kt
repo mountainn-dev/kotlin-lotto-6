@@ -3,38 +3,35 @@ package lotto.controller
 import lotto.InputView
 import lotto.OutputView
 import lotto.domain.LottoMoney
-import lotto.state.ControllerState.*
+import lotto.state.ControllerState
 
-class UserLottoController {
+class MoneyController {
     private val inputView = InputView()
     private val outputView = OutputView()
     private lateinit var lottoMoney: LottoMoney
-    private var controllerState = NORMAL
+    private var controllerState = ControllerState.NORMAL
 
-    fun saleLotto() {
-        getMoneyFromUser()
-    }
-
-    private fun getMoneyFromUser() {
+    fun set() {
         requestMoney()
         setValidMoney()
     }
 
     private fun setValidMoney() {
-       do {
-           setMoney()
-       } while (isControllerOnError())
+        do {
+            setMoney()
+        } while (isControllerOnError())
     }
 
     private fun setMoney() {
         try {
             lottoMoney = LottoMoney(readNumberFromUser())
-            controllerState = NORMAL
+            controllerState = ControllerState.NORMAL
         } catch (e: IllegalArgumentException) {
             requestMoneyOnError()
-            controllerState = ERROR
+            controllerState = ControllerState.ERROR
         }
     }
+
 
     private fun requestMoney() {
         outputView.printRequestMoneyMessage()
@@ -46,5 +43,5 @@ class UserLottoController {
 
     private fun readNumberFromUser() = inputView.readNumber()
 
-    private fun isControllerOnError() = controllerState == ERROR
+    private fun isControllerOnError() = controllerState == ControllerState.ERROR
 }
