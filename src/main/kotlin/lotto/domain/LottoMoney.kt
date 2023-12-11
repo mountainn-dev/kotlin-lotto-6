@@ -1,4 +1,11 @@
 package lotto.domain
 
-class LottoMoney {
+import lotto.constants.Constants
+
+class LottoMoney(private val money: Int) {
+
+    init {
+        require(money > Constants.ZERO)
+        require(money % Constants.THOUSAND == Constants.ZERO)
+    }
 }
