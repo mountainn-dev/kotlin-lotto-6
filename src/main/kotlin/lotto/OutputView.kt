@@ -27,4 +27,12 @@ class OutputView {
     private fun printTotalLotto(userLotto: List<Lotto>) {
         userLotto.map { println(it.numbers().sorted()) }
     }
+
+    fun printRequestWinningNumbers() {
+        println(Request.REQUEST_WINNING_NUMBERS)
+    }
+
+    fun printErrorOnRequestWinningNumbers() {
+        println(Exception.ERROR_REQUEST_WINNING_NUMBERS)
+    }
 }
