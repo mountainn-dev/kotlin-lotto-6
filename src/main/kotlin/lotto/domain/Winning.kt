@@ -9,4 +9,8 @@ class Winning(private val winningNumbers: List<Int>, private val bonusNumber: In
         require(bonusNumber in Constants.MIN_LOTTO_NUMBER..Constants.MAX_LOTTO_NUMBER)
         require(!winningNumbers.contains(bonusNumber))
     }
+
+    fun numbers() = winningNumbers
+
+    fun bonus() = bonusNumber
 }

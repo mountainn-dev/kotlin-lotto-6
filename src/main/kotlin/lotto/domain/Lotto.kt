@@ -9,7 +9,5 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.distinct().size == numbers.size)
     }
 
-    fun numbers() = numbers
-
-    // TODO: 추가 기능 구현
+    fun contains(number: Int) = numbers.contains(number)
 }

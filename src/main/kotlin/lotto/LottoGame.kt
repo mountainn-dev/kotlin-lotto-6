@@ -13,6 +13,7 @@ class LottoGame {
         setLottoMoney()
         publishLotto()
         pickWinningNumbers()
+        showWinningResult()
     }
 
     private fun setLottoMoney() {
@@ -25,5 +26,9 @@ class LottoGame {
 
     private fun pickWinningNumbers() {
         winningController.pickNumbers()
+    }
+
+    private fun showWinningResult() {
+        winningController.showResult(lottoController.get())
     }
 }

@@ -9,6 +9,8 @@ class LottoController {
     private val outputView = OutputView()
     private lateinit var userLotto: List<Lotto>
 
+    fun get() = userLotto
+
     fun publish(count: Int) {
         publishLottoAsMuchAsCount(count)
         showResult()
