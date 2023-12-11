@@ -17,6 +17,6 @@ class LottoGame {
     }
 
     private fun publishLotto() {
-        lottoController.publish()
+        lottoController.publish(moneyController.availableLottoCount())
     }
 }

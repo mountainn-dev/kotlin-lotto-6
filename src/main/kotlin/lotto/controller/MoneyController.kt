@@ -8,8 +8,10 @@ import lotto.state.ControllerState
 class MoneyController {
     private val inputView = InputView()
     private val outputView = OutputView()
-    private lateinit var lottoMoney: LottoMoney
+    private lateinit var money: LottoMoney
     private var controllerState = ControllerState.NORMAL
+
+    fun availableLottoCount() = money.availableLottoCount()
 
     fun set() {
         requestMoney()
@@ -24,7 +26,7 @@ class MoneyController {
 
     private fun setMoney() {
         try {
-            lottoMoney = LottoMoney(readNumberFromUser())
+            money = LottoMoney(readNumberFromUser())
             controllerState = ControllerState.NORMAL
         } catch (e: IllegalArgumentException) {
             requestMoneyOnError()

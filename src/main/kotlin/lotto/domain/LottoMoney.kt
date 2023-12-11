@@ -8,4 +8,6 @@ class LottoMoney(private val money: Int) {
         require(money > Constants.ZERO)
         require(money % Constants.THOUSAND == Constants.ZERO)
     }
+
+    fun availableLottoCount() = money / Constants.THOUSAND
 }
